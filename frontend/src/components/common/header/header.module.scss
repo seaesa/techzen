@@ -1,0 +1,29 @@
+.header {
+  height: 64px;
+  background-color: #fff;
+  border-bottom: 1px solid light-dark(#ccc, #ddd);
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.inner {
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  display: block;
+  line-height: 1;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: light-dark(#555555, #000);
+  font-size: 14px;
+  font-weight: 500;
+
+  @mixin hover {
+    background-color: light-dark(#7a7a7a, #000000);
+  }
+}
