@@ -1,0 +1,5 @@
+{
+  "verbose": true,
+  "ext": "ts,js,json,mjs,mts,cjs,cts",
+  "exec": "ts-node -r tsconfig-paths/register index.ts"
+}

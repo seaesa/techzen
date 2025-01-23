@@ -1,3 +1,33 @@
 @url=http://localhost:3000
 ### GET
-GET {{url}}/post
+PATCH {{url}}/post
+### GET
+GET {{url}}/users
+### GET
+POST {{url}}/user
+Content-Type: application/json
+
+{
+  "name":"Nguyễn Văn D",
+  "email":"abc@gmail.com",
+  "phone":"32434545"
+}
+### GET
+POST {{url}}/transaction
+Content-Type: application/json
+
+{
+  "acreage":"123",
+"price": "123",
+"service_date": "2025-01-08T17:00:00.000Z",
+"service_type_id": "f426da4d-a12e-4d98-a496-ba726e8452d4",
+"transaction_id": "234",
+"user_id": "dsdvsd"
+}
+### GET
+POST {{url}}/service
+Content-Type: application/json
+
+{
+  "name":"Nhà Và Đất"
+}

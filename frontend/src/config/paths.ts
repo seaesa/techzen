@@ -2,9 +2,9 @@ export const paths = {
   home: {
     path: '/'
   },
-  test: {
-    path: '/table'
-  }
+  transactions: {
+    path: '/transactions'
+  },
 }
 
 export const footers = [
@@ -38,8 +38,5 @@ export const footers = [
 ]
 
 export const headers = [
-  { path: '/about', label: 'Features' },
-  { path: '/pricing', label: 'Pricing' },
-  { path: '/learn', label: 'Learn' },
-  { path: '/community', label: 'Community' },
+  { path: '/transactions', label: 'Transactions' },
 ]

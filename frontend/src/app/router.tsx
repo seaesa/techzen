@@ -2,7 +2,7 @@ import { MainErrorFallback } from '@/components/errors/main';
 import { paths } from '@/config/paths';
 import { createBrowserRouter } from "react-router";
 import { HomePage } from './routes/home/home';
-import { Test } from './routes/text';
+import { Transactions } from './routes/transactions/transactions';
 
 export let router = createBrowserRouter([
   {
@@ -11,7 +11,7 @@ export let router = createBrowserRouter([
     ErrorBoundary: MainErrorFallback,
   },
   {
-    path: paths.test.path,
-    Component: Test,
-  },
+    path: paths.transactions.path,
+    Component: Transactions
+  }
 ]);

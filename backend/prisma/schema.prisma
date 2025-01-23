@@ -13,28 +13,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String   @db.VarChar(255)
-  content   String?
-  published Boolean  @default(false)
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
-}
-
-model Profile {
-  id     Int     @id @default(autoincrement())
-  bio    String?
-  user   User    @relation(fields: [userId], references: [id])
-  userId Int     @unique
-}
-
 model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  name    String?
-  posts   Post[]
-  profile Profile?
+  id          String        @id @default(uuid())
+  name        String        @db.VarChar(255)
+  email       String
+  phone       Int
+  Transaction Transaction[]
+}
+
+model Transaction {
+  id              String  @id @default(uuid())
+  transaction_id  String  @unique
+  service_date    String
+  price           Int
+  acreage         Int
+  user_id         String
+  user            User    @relation(fields: [user_id], references: [id])
+  service_type    Service @relation(fields: [service_type_id], references: [id])
+  service_type_id String
+}
+
+model Service {
+  id          String        @id @default(uuid())
+  name        String
+  Transaction Transaction[]
 }

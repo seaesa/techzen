@@ -1,7 +1,7 @@
 import { ColumnDef, flexRender, getCoreRowModel, getPaginationRowModel, PaginationState, useReactTable } from '@tanstack/react-table'
 import { Pagination } from './pagination'
 import { useState } from 'react';
-
+import { Table as Tabler } from 'react-bootstrap'
 interface TableProps<T, D> extends React.TableHTMLAttributes<T> {
   data: T[],
   columns: ColumnDef<T, D>[],
@@ -29,42 +29,40 @@ export function Table<T, D>({ data, columns, paginations }: TableProps<T, D>) {
   })
   return (
     <>
-      <div className='border px-2'>
-        <table className="table align-middle mb-0 bg-white">
-          <thead className="bg-light">
-            {table.getHeaderGroups()?.map((headers) => (
-              <tr key={headers.id}>
-                {
-                  headers.headers.map((header) => (
-                    <th key={header.id}>
-                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                    </th>
-                  ))
-                }
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {
-              table.getRowModel()?.rows?.length ?
-                table.getRowModel().rows.map((row) => (
-                  <tr key={row.id}>
-                    {row.getAllCells().map((cell) => (
-                      <td key={cell.id}>
-                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                      </td>
-                    ))}
-                  </tr>
+      <Tabler bordered striped className="table align-middle mb-0 bg-white">
+        <thead className="bg-light">
+          {table.getHeaderGroups()?.map((headers) => (
+            <tr key={headers.id}>
+              {
+                headers.headers.map((header) => (
+                  <th key={header.id}>
+                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                  </th>
                 ))
-                : (
-                  <tr>
-                    <td className='text-center' colSpan={columns?.length}>không có dữ liệu</td>
-                  </tr>
-                )
-            }
-          </tbody>
-        </table>
-      </div>
+              }
+            </tr>
+          ))}
+        </thead>
+        <tbody>
+          {
+            table.getRowModel()?.rows?.length ?
+              table.getRowModel().rows.map((row) => (
+                <tr key={row.id}>
+                  {row.getAllCells().map((cell) => (
+                    <td key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </td>
+                  ))}
+                </tr>
+              ))
+              : (
+                <tr>
+                  <td className='text-center' colSpan={columns?.length}>không có dữ liệu</td>
+                </tr>
+              )
+          }
+        </tbody>
+      </Tabler>
       <Pagination
         total={table.getPageCount()}
         value={table.getState().pagination.pageIndex + 1}

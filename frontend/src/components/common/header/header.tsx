@@ -1,6 +1,7 @@
 import { cn } from '@/utils/cn';
 import classes from './header.module.scss';
 import { headers } from '@/config/paths';
+import { Link } from 'react-router';
 
 export function Header() {
   return (
@@ -12,14 +13,13 @@ export function Header() {
           <div className={cn(classes.links, 'd-flex gap-4')}>
             {
               headers.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.path}
+                  to={link.path}
                   className={classes.link}
-                  onClick={(event) => event.preventDefault()}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))
             }
           </div>
